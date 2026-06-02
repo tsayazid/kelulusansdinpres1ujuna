@@ -1,26 +1,25 @@
-/* --- FONTS & NEON POP COLORFUL DESIGN SYSTEM --- */
+/* --- FONTS & LIGHT PREMIUM DESIGN SYSTEM --- */
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
 
 :root {
-    /* Latar belakang gradasi super ceria */
-    --bg-colorful: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #6b11ff 100%);
+    /* Latar belakang terang, bersih, dan mewah */
+    --bg-light: #f4f7fa;
     --card-bg: #ffffff;
     
-    /* Palet Teks */
-    --text-main: #1a202c;
-    --text-muted: #718096;
+    /* Warna Utama Teks */
+    --text-primary: #0f172a; /* Slate gelap tebal */
+    --text-muted: #64748b;    /* Abu-abu elegan */
     
-    /* Komponen Gradasi Neon */
-    --search-btn-gradient: linear-gradient(135deg, #ff007f 0%, #ff4b2b 100%);
-    --input-focus-glow: rgba(255, 0, 127, 0.2);
+    /* Aksen Biru Safir & Cyan */
+    --tech-blue: #0284c7;
+    --tech-gradient: linear-gradient(135deg, #0f2cc9 0%, #0084ff 100%);
+    --blue-glow: rgba(0, 132, 255, 0.15);
     
-    /* Status Kelulusan Berwarna Mencolok */
-    --lulus-gradient: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
-    --gagal-gradient: linear-gradient(135deg, #f857a6 0%, #ff5858 100%);
-    
-    /* Box Peringatan Prank */
-    --warning-bg: linear-gradient(135deg, #fff9db 0%, #fff3bf 100%);
-    --warning-text: #e67e22;
+    /* Status Kelulusan */
+    --lulus-color: #0d9488; /* Teal cerah profesional */
+    --gagal-color: #e11d48; /* Merah rose tegas */
+    --warning-box: #fff7ed;
+    --warning-text: #ea580c;
 }
 
 * {
@@ -31,8 +30,8 @@
 
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    background: var(--bg-colorful);
-    color: var(--text-main);
+    background-color: var(--bg-light);
+    color: var(--text-primary);
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -42,114 +41,108 @@ body {
     overflow-x: hidden;
 }
 
-/* Lingkaran Dekorasi Neon Abstrak di Background */
-body::before, body::after {
+/* Pola Grid Abstrak Halus di Background Mode Terang */
+body::before {
     content: "";
     position: absolute;
-    border-radius: 50%;
-    filter: blur(60px);
-    z-index: -1;
-    opacity: 0.6;
-}
-body::before {
-    top: -10%;
-    left: -10%;
-    width: 300px;
-    height: 300px;
-    background: #00f2fe;
-}
-body::after {
-    bottom: -10%;
-    right: -10%;
-    width: 350px;
-    height: 350px;
-    background: #ff007f;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(15, 23, 42, 0.015) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(15, 23, 42, 0.015) 1px, transparent 1px);
+    background-size: 24px 24px;
+    z-index: -2;
 }
 
-/* --- MAIN CONTAINER (COLORFUL POP CARD) --- */
+/* Pendaran Cahaya Biru Lembut di Background */
+body::after {
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(0, 132, 255, 0.05) 0%, transparent 70%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* --- MAIN CONTAINER (PREMIUM LIGHT CARD) --- */
 .container {
     background: var(--card-bg);
-    border-radius: 24px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
-    padding: 35px 24px;
+    border-radius: 20px;
+    /* Bayangan halus berlapis agar kartu terlihat mengambang mewah */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 
+                0 20px 40px -1px rgba(0, 0, 0, 0.08);
+    padding: 40px 24px;
     width: 100%;
-    max-width: 460px;
+    max-width: 450px;
     text-align: center;
     position: relative;
-    border: 4px solid #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.03);
 }
 
-/* Border Pelangi Tebal di Sisi Atas Kartu */
+/* Garis Safir Premium Tipis di Sisi Atas Kartu */
 .container::before {
     content: "";
     position: absolute;
-    top: -4px;
-    left: -4px;
-    right: -4px;
-    height: 8px;
-    border-top-left-radius: 24px;
-    border-top-right-radius: 24px;
-    background: linear-gradient(to right, #ff007f, #7f00ff, #00f2fe, #38ef7d, #ffcf00);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background: var(--tech-gradient);
 }
 
 /* --- KOP SEKOLAH --- */
 .school-header {
     margin-bottom: 24px;
     padding-bottom: 20px;
-    border-bottom: 3px double #edf2f7;
+    border-bottom: 1px solid #e2e8f0;
 }
 
 .school-header h2 {
-    font-size: 24px;
+    font-size: 23px;
     font-weight: 800;
-    /* Efek teks gradasi warna ungu tua ke biru laut */
-    background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #0f172a;
     letter-spacing: -0.5px;
     line-height: 1.2;
 }
 
 .npsn-badge {
     display: inline-block;
-    background: #e6fffa;
-    color: #00a389;
+    background: #f1f5f9;
+    color: #334155;
     font-size: 11px;
     font-weight: 700;
-    padding: 5px 14px;
-    border-radius: 100px;
+    padding: 4px 12px;
+    border-radius: 6px;
     margin-top: 8px;
     text-transform: uppercase;
-    box-shadow: 0 2px 8px rgba(0, 163, 137, 0.15);
+    letter-spacing: 0.5px;
+    border: 1px solid #e2e8f0;
 }
 
 .ta-text {
     font-size: 13px;
-    font-weight: 700;
-    color: #a0aec0;
+    font-weight: 600;
+    color: var(--text-muted);
     margin-top: 6px;
-    letter-spacing: 1px;
 }
 
 .main-title {
-    font-size: 15px;
-    font-weight: 800;
-    background: linear-gradient(to right, #7f00ff, #ff007f);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--tech-blue);
     margin-top: 12px;
     text-transform: uppercase;
     letter-spacing: 1.5px;
 }
 
-/* --- FORM PENCARIAN --- */
+/* --- FORM PENCARIAN CLEAN --- */
 .search-container {
-    background: #f7fafc;
+    background: #f8fafc;
     padding: 20px;
-    border-radius: 18px;
-    border: 2px dashed #e2e8f0;
+    border-radius: 12px;
+    border: 1px solid #edf2f7;
     margin-bottom: 24px;
 }
 
@@ -157,7 +150,7 @@ body::after {
     font-size: 13px;
     color: var(--text-muted);
     margin-bottom: 16px;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1.5;
 }
 
@@ -170,119 +163,120 @@ body::after {
 input[type="text"] {
     width: 100%;
     padding: 16px;
-    border: 2.5px solid #e2e8f0;
-    border-radius: 14px;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
     font-size: 16px;
     font-family: inherit;
-    font-weight: 800;
+    font-weight: 700;
     outline: none;
-    transition: all 0.25s ease;
-    color: #2d3748;
+    transition: all 0.2s ease;
+    color: #0f172a;
     text-align: center;
+    background-color: #ffffff;
     letter-spacing: 1px;
 }
 
 input[type="text"]:focus {
-    border-color: #ff007f;
-    box-shadow: 0 0 0 4px var(--input-focus-glow);
-    background: #fff;
+    border-color: #0084ff;
+    box-shadow: 0 0 0 4px var(--blue-glow);
 }
 
-/* Tombol Cari Pink/Oranye Menyala */
+/* Tombol Biru Gradasi Tajam */
 .btn-search {
     width: 100%;
-    background: var(--search-btn-gradient);
+    background: var(--tech-gradient);
     color: white;
     border: none;
     padding: 16px;
-    border-radius: 14px;
-    font-size: 16px;
-    font-weight: 800;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     cursor: pointer;
     font-family: inherit;
-    transition: all 0.25s ease;
-    box-shadow: 0 6px 16px rgba(255, 0, 127, 0.35);
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 132, 255, 0.2);
 }
 
 .btn-search:active {
-    transform: scale(0.97);
+    transform: scale(0.98);
 }
 
 /* --- BOX ERROR --- */
 .error-message {
     display: none;
-    color: #ffffff;
-    background: var(--gagal-gradient);
+    color: var(--gagal-color);
+    background: #fff1f2;
+    border: 1px solid #fecdd3;
     padding: 16px;
-    border-radius: 14px;
-    font-weight: 700;
+    border-radius: 8px;
+    font-weight: 600;
     font-size: 13px;
     margin-top: 12px;
     line-height: 1.5;
-    box-shadow: 0 6px 15px rgba(248, 87, 166, 0.3);
 }
 
 /* --- KARTU HASIL KELULUSAN --- */
 .result-card {
     display: none;
     background: #ffffff;
-    border: 2px solid #edf2f7;
-    border-radius: 18px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
     padding: 24px 20px;
     text-align: left;
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.01);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.01);
 }
 
 .result-header {
     text-align: center;
     padding-bottom: 18px;
-    border-bottom: 2px dashed #edf2f7;
+    border-bottom: 1px solid #edf2f7;
     margin-bottom: 20px;
 }
 
 .result-header .title-badge {
     font-size: 11px;
-    font-weight: 800;
-    color: #a0aec0;
-    letter-spacing: 2px;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 1.5px;
 }
 
-/* Badge Lulus Biru Neon Cerah */
+/* Badge Status Tegas Minimalis */
 .status-badge {
     display: inline-block;
-    color: white;
-    padding: 10px 40px;
-    border-radius: 100px;
+    padding: 10px 35px;
+    border-radius: 6px;
     font-weight: 800;
-    font-size: 20px;
+    font-size: 18px;
     margin-top: 10px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
 }
 
 .status-lulus {
-    background: var(--lulus-gradient);
-    box-shadow: 0 6px 20px rgba(79, 172, 254, 0.4);
+    background: #ccfbf1;
+    color: var(--lulus-color);
+    border: 1px solid #99f6e4;
 }
 
 .status-tidak {
-    background: var(--gagal-gradient);
-    box-shadow: 0 6px 20px rgba(255, 88, 88, 0.4);
+    background: #ffe4e6;
+    color: var(--gagal-color);
+    border: 1px solid #fecdd3;
 }
 
-/* BARIS DETAIL DATA */
+/* BARIS DETAIL DATA CLEAN STYLE */
 .detail-row {
     display: flex;
     flex-direction: column;
     padding: 12px 4px;
-    border-bottom: 1px solid #f7fafc;
+    border-bottom: 1px solid #f8fafc;
 }
 
 .detail-label {
-    font-weight: 700;
-    color: #b2bfd2;
+    font-weight: 600;
+    color: var(--text-muted);
     font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -291,25 +285,24 @@ input[type="text"]:focus {
 
 .detail-value {
     font-weight: 700;
-    color: #2d3748;
+    color: #1e293b;
     font-size: 15px;
     word-break: break-word;
 }
 
-/* --- AREA TIMER PRANK (KUNING MENYALA) --- */
+/* --- AREA TIMER PRANK (LIGHT WARNING) --- */
 .timer-section {
     margin-top: 20px;
-    background: var(--warning-bg);
-    border: 2px solid #ffe066;
+    background: var(--warning-box);
+    border: 1px solid var(--warning-border);
     padding: 18px;
-    border-radius: 14px;
+    border-radius: 8px;
     text-align: center;
-    box-shadow: 0 4px 12px rgba(255, 219, 21, 0.2);
 }
 
 .timer-text {
-    color: #b45309;
-    font-weight: 700;
+    color: var(--warning-text);
+    font-weight: 600;
     font-size: 12px;
     line-height: 1.5;
     margin-bottom: 12px;
@@ -318,37 +311,38 @@ input[type="text"]:focus {
 .countdown {
     font-size: 36px;
     font-weight: 800;
-    color: #ff0055;
+    color: var(--gagal-color);
     display: block;
     margin-bottom: 14px;
-    letter-spacing: 0.5px;
-    text-shadow: 0 2px 8px rgba(255, 0, 85, 0.2);
+    letter-spacing: -0.5px;
 }
 
 .btn-retry {
     width: 100%;
-    background: #e2e8f0;
-    color: #a0aec0;
-    border: none;
+    background: #f1f5f9;
+    color: #94a3b8;
+    border: 1px solid #e2e8f0;
     padding: 16px;
-    border-radius: 14px;
-    font-size: 15px;
-    font-weight: 800;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
     cursor: not-allowed;
     font-family: inherit;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
     transition: all 0.3s ease;
     -webkit-tap-highlight-color: transparent;
 }
 
 .btn-retry.active {
-    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-    color: white;
+    background: var(--tech-gradient);
+    color: #ffffff;
+    border: none;
     cursor: pointer;
-    box-shadow: 0 6px 15px rgba(56, 239, 125, 0.35);
+    box-shadow: 0 4px 12px rgba(0, 132, 255, 0.2);
 }
 
-/* RESPONSIVE LAYOUT (DEKSTOP / HP LEBAR) */
+/* RESPONSIVE LAYOUT */
 @media (min-width: 400px) {
     .search-box {
         flex-direction: row;
@@ -374,12 +368,12 @@ input[type="text"]:focus {
     }
 }
 
-/* ANIMASI POP-UP FUN */
+/* ANIMASI TRANSISI HALUS */
 .animate-fade {
-    animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    animation: lightFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@keyframes popIn {
-    from { opacity: 0; transform: scale(0.9) translateY(10px); }
-    to { opacity: 1; transform: scale(1) translateY(0); }
+@keyframes lightFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
 }
