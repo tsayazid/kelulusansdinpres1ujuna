@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Pengumuman Kelulusan SD Inpres 1 Ujuna</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="school-header">
+            <h2>SD Inpres 1 Ujuna</h2>
+            <div><span class="npsn-badge">NPSN: 40203662</span></div>
+            <div class="ta-text">Tahun Ajaran 2025/2026</div>
+            <div class="main-title">Pencarian Kelulusan Siswa</div>
+        </div>
+
+        <div class="search-container">
+            <p>Silakan input Nomor Induk Siswa Nasional (NISN) resmi untuk memvalidasi berkas:</p>
+            <div class="search-box">
+                <input type="text" id="nisnInput" placeholder="Ketik NISN..." inputmode="numeric" pattern="[0-9]*" maxlength="10">
+                <button class="btn-search" onclick="cariSiswa()">Cari</button>
+            </div>
+        </div>
+
+        <div id="errorMessage" class="error-message animate-fade">⚠️ Nomor NISN salah atau tidak terdaftar di database kelulusan sekolah!</div>
+
+        <div id="resultCard" class="result-card animate-fade">
+            <div class="result-header">
+                <div class="title-badge">SURAT KEPUTUSAN HASIL</div>
+                <div id="statusBadge" class="status-badge status-lulus">LULUS</div>
+            </div>
+
+            <div class="detail-row"><span class="detail-label">NISN Siswa</span><span class="detail-value" id="resNisn">-</span></div>
+            <div class="detail-row"><span class="detail-label">Nama Lengkap</span><span class="detail-value" id="resNama">-</span></div>
+            <div class="detail-row"><span class="detail-label">Tempat Lahir</span><span class="detail-value" id="resTempat">-</span></div>
+            <div class="detail-row"><span class="detail-label">Tanggal Lahir</span><span class="detail-value" id="resTanggal">-</span></div>
+
+            <div id="timerSection" class="timer-section" style="display: none;">
+                <div class="timer-text">Ada penangguhan penguncian nilai di dapodik pusat. Tolong tunggu pemrosesan otomatis sinkronisasi ulang berkas:</div>
+                <div id="countdownDisplay" class="countdown">07:00</div>
+                <button id="retryBtn" class="btn-retry" disabled onclick="prosesUlangKelulusan()">Coba Kembali</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
