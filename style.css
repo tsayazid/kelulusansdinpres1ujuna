@@ -1,14 +1,22 @@
-/* --- FONTS & THEME --- */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+/* --- FONTS & THE HYBRID STREAMING DESIGN SYSTEM --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
 :root {
-    --bg-gradient: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
-    --card-bg: #ffffff;
-    --primary-text: #2d3748;
-    --accent-gradient: linear-gradient(to right, #ff416c, #ff4b2b);
-    --success-gradient: linear-gradient(to right, #11998e, #38ef7d);
-    --search-btn-gradient: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
-    --danger-color: #e53e3e;
+    /* Background & Card (Netflix Dark Style) */
+    --bg-cinema: #000000;
+    --card-stream: #141414; /* Abu-hitam khas latar belakang interface Netflix */
+    --text-light: #ffffff;
+    --text-muted: #aaaaaa;
+    
+    /* Warna Aksen Utama Tiga Platform */
+    --netflix-red: #e50914; /* Merah ikonik Netflix */
+    --disney-blue-glow: rgba(0, 180, 236, 0.25); /* Glow biru Disney+ */
+    --prime-blue: #00a8e1; /* Biru elektrik Prime Video */
+    
+    /* Status Colors */
+    --lulus-glow: #46d369; /* Hijau cerah khas sukses/streaming */
+    --warning-box: #1f1f1f;
+    --warning-text: #ff9900;
 }
 
 * {
@@ -18,141 +26,168 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background: var(--bg-gradient);
-    color: var(--primary-text);
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-cinema);
+    color: var(--text-light);
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 12px;
+    padding: 16px;
+    position: relative;
+    overflow-x: hidden;
 }
 
+/* Efek Cahaya Sorot Sinematik (Disney+ Backdrop Glow) */
+body::before {
+    content: "";
+    position: absolute;
+    top: -15%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 650px;
+    height: 350px;
+    background: radial-gradient(circle, var(--disney-blue-glow) 0%, transparent 75%);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* --- MAIN CONTAINER (NETFLIX STYLE CARD) --- */
 .container {
-    background-color: var(--card-bg);
-    border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-    padding: 30px 20px;
+    background: var(--card-stream);
+    border-radius: 12px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.85);
+    padding: 40px 24px;
     width: 100%;
-    max-width: 500px;
+    max-width: 450px;
     text-align: center;
     position: relative;
-    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Rainbow line top decorator */
+/* Garis Dekorasi Merah Berani di Atas Kartu (Ciri Khas Netflix) */
 .container::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 8px;
-    background: linear-gradient(to right, #ff007f, #7f00ff, #00f0ff, #38ef7d, #ff4b2b);
+    height: 4px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    background: var(--netflix-red);
 }
 
-/* --- KOP SEKOLAH --- */
+/* --- KOP SEKOLAH INSTANSI RESMI (PRIME MINIMALIST) --- */
 .school-header {
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 3px double #e2e8f0;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .school-header h2 {
-    font-size: 22px;
-    font-weight: 800;
-    color: #0b2265;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: -0.5px;
     line-height: 1.2;
+    text-transform: uppercase;
 }
 
 .npsn-badge {
     display: inline-block;
-    background: #edf2f7;
-    color: #4a5568;
-    font-size: 12px;
-    font-weight: 600;
-    padding: 4px 10px;
-    border-radius: 6px;
-    margin-top: 6px;
+    background: rgba(0, 168, 225, 0.15); /* Transparansi Biru Prime Video */
+    color: var(--prime-blue);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-top: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 1px solid rgba(0, 168, 225, 0.3);
 }
 
 .ta-text {
-    font-size: 14px;
-    font-weight: 600;
-    color: #718096;
-    margin-top: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-top: 6px;
 }
 
 .main-title {
-    font-size: 16px;
-    font-weight: 700;
-    background: linear-gradient(to right, #0072ff, #00c6ff);
-    -webkit-background-clip: text;
-    background-clip: text; /* Menghilangkan Warning VS Code */
-    -webkit-text-fill-color: transparent;
-    margin-top: 10px;
+    font-size: 13px;
+    font-weight: 800;
+    color: #ffffff;
+    opacity: 0.9;
+    margin-top: 14px;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 2.5px;
 }
 
-/* --- SEARCH BOX --- */
+/* --- FORM PENCARIAN (NETFLIX INPUT STYLE) --- */
 .search-container {
-    background: #f7fafc;
-    padding: 15px;
-    border-radius: 14px;
-    border: 1px solid #e2e8f0;
-    margin-bottom: 20px;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 24px 18px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    margin-bottom: 24px;
 }
 
 .search-container p {
-    font-size: 12px;
-    color: #718096;
-    margin-bottom: 12px;
-    font-weight: 500;
-    line-height: 1.4;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    font-weight: 400;
+    line-height: 1.5;
 }
 
 .search-box {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 14px;
 }
 
 input[type="text"] {
     width: 100%;
-    padding: 14px;
-    border: 2px solid #cbd5e0;
-    border-radius: 10px;
+    padding: 16px;
+    border: 1px solid #333333;
+    border-radius: 4px; /* Kotak khas Netflix */
     font-size: 16px;
     font-family: inherit;
-    font-weight: 600;
+    font-weight: 700;
     outline: none;
-    transition: all 0.3s ease;
-    color: #2d3748;
+    transition: all 0.2s ease;
+    color: #ffffff;
     text-align: center;
+    background-color: #333333; /* Warna input field Netflix asli */
+    letter-spacing: 1px;
 }
 
 input[type="text"]:focus {
-    border-color: #0072ff;
-    box-shadow: 0 0 10px rgba(0, 114, 255, 0.2);
-    background: #fff;
+    border-color: #8c8c8c;
+    background-color: #454545;
 }
 
+/* Tombol Merah Solid Bold Khas Netflix */
 .btn-search {
     width: 100%;
-    background: var(--search-btn-gradient);
+    background-color: var(--netflix-red);
     color: white;
     border: none;
-    padding: 14px;
-    border-radius: 10px;
+    padding: 16px;
+    border-radius: 4px;
     font-size: 16px;
     font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
     cursor: pointer;
     font-family: inherit;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 114, 255, 0.25);
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-search:hover {
+    background-color: #c11119; /* Merah gelap saat di-hover */
 }
 
 .btn-search:active {
@@ -162,156 +197,172 @@ input[type="text"]:focus {
 /* --- ERROR MESSAGE --- */
 .error-message {
     display: none;
-    color: #fff;
-    background: var(--accent-gradient);
-    padding: 14px;
-    border-radius: 10px;
+    color: #ffffff;
+    background-color: var(--netflix-red);
+    padding: 16px;
+    border-radius: 4px;
     font-weight: 600;
     font-size: 13px;
-    margin-top: 10px;
-    line-height: 1.4;
-    box-shadow: 0 4px 12px rgba(255, 65, 108, 0.25);
+    margin-top: 12px;
+    line-height: 1.5;
 }
 
-/* --- CARD HASIL PENCARIAN --- */
+/* --- HASIL KELULUSAN (PRIME INTERFACE STYLE) --- */
 .result-card {
     display: none;
-    background: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 14px;
-    padding: 20px 15px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 24px 20px;
     text-align: left;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.03);
 }
 
 .result-header {
     text-align: center;
-    padding-bottom: 15px;
-    border-bottom: 2px dashed #e2e8f0;
-    margin-bottom: 15px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 20px;
 }
 
 .result-header .title-badge {
     font-size: 11px;
     font-weight: 700;
-    color: #a0aec0;
-    letter-spacing: 1px;
+    color: var(--text-muted);
+    letter-spacing: 2px;
 }
 
+/* Badge Status Lulus Menyala Lembut (Disney/Prime Mix) */
 .status-badge {
     display: inline-block;
     color: white;
-    padding: 8px 25px;
-    border-radius: 50px;
+    padding: 10px 35px;
+    border-radius: 4px;
     font-weight: 800;
-    font-size: 16px;
-    margin-top: 6px;
+    font-size: 18px;
+    margin-top: 10px;
     text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .status-lulus {
-    background: var(--success-gradient);
-    box-shadow: 0 4px 12px rgba(56, 239, 125, 0.3);
+    background-color: var(--lulus-glow);
+    box-shadow: 0 0 15px rgba(70, 211, 105, 0.4);
 }
 
 .status-tidak {
-    background: var(--accent-gradient);
-    box-shadow: 0 4px 12px rgba(225, 62, 62, 0.3);
+    background-color: var(--netflix-red);
+    box-shadow: 0 0 15px rgba(229, 9, 20, 0.4);
 }
 
+/* DETAIL DATA MINIMALIS (AMAZON PRIME INTERFACE) */
 .detail-row {
     display: flex;
     flex-direction: column;
-    padding: 8px 0;
-    border-bottom: 1px dashed #f7fafc;
+    padding: 12px 4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .detail-label {
-    font-weight: 600;
-    color: #a0aec0;
-    font-size: 12px;
-    margin-bottom: 2px;
+    font-weight: 700;
+    color: var(--text-muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
 }
 
 .detail-value {
-    font-weight: 700;
-    color: #2d3748;
-    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 15px;
     word-break: break-word;
 }
 
 /* --- TIMER AREA PRANK --- */
 .timer-section {
-    margin-top: 15px;
-    background: #fff5f5;
-    border: 1px dashed #feb7b7;
-    padding: 15px;
-    border-radius: 10px;
+    margin-top: 20px;
+    background: var(--warning-box);
+    border: 1px solid rgba(255, 153, 0, 0.2);
+    padding: 18px;
+    border-radius: 4px;
     text-align: center;
 }
 
 .timer-text {
-    color: var(--danger-color);
-    font-weight: 600;
+    color: var(--warning-text);
+    font-weight: 500;
     font-size: 12px;
-    line-height: 1.4;
-    margin-bottom: 10px;
+    line-height: 1.5;
+    margin-bottom: 12px;
 }
 
 .countdown {
-    font-size: 24px;
-    font-weight: 800;
-    color: var(--danger-color);
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--netflix-red);
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 14px;
+    letter-spacing: 1px;
+    text-shadow: 0 0 15px rgba(229, 9, 20, 0.4);
 }
 
 .btn-retry {
     width: 100%;
-    background: #cbd5e0;
-    color: #718096;
-    border: none;
-    padding: 14px;
-    border-radius: 10px;
-    font-size: 15px;
+    background: #222222;
+    color: #666666;
+    border: 1px solid #333333;
+    padding: 16px;
+    border-radius: 4px;
+    font-size: 14px;
     font-weight: 700;
     cursor: not-allowed;
     font-family: inherit;
-    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
     -webkit-tap-highlight-color: transparent;
 }
 
 .btn-retry.active {
-    background: var(--success-gradient);
+    background-color: var(--lulus-glow);
     color: white;
+    border: none;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(56, 239, 125, 0.25);
+    box-shadow: 0 4px 15px rgba(70, 211, 105, 0.4);
 }
 
-/* Responsive Layout untuk Layar Lebar (Tablet / Desktop) */
+/* RESPONSIVE LAYOUT (TABLET / SCREEN MEDIUM) */
 @media (min-width: 400px) {
     .search-box {
         flex-direction: row;
     }
     .btn-search {
         width: auto;
+        white-space: nowrap;
+        padding: 0 28px;
     }
     .detail-row {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        padding: 14px 4px;
+    }
+    .detail-label {
+        margin-bottom: 0;
     }
     .detail-value {
         text-align: right;
         max-width: 65%;
+        font-size: 14px;
     }
 }
 
+/* CINEMATIC FADE ANIMATION */
 .animate-fade {
-    animation: fadeIn 0.4s ease-out;
+    animation: cinemaFadeIn 0.5s cubic-bezier(0.215, 0.610, 0.355, 1);
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
+@keyframes cinemaFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
     to { opacity: 1; transform: translateY(0); }
 }
